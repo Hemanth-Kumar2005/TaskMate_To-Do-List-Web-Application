@@ -1,0 +1,818 @@
+/* 
+  TaskMate To-Do List - CSS
+  Human-written comments to explain sections and why things look the way they do.
+*/
+
+:root {
+  /* Main color palette */
+  --primary: #3fa7ff;
+  --primary-dark: #2c65c8;
+  --secondary: #2c65c8;
+  --danger: #ed4245;
+  --bg-dark: #1a2233;
+  --card-dark: #212c3b;
+  --text-dark: #f2f4fa;
+  --input-dark: #263147;
+
+  --primary-light: #2c65c8;
+  --secondary-light: #19a285;
+  --bg-light: #f8fafc;
+  --card-light: #fff;
+  --text-light: #2d3848;
+  --input-light: #e8eef6;
+
+  --radius: 12px;
+  --shadow: 0 4px 32px rgba(0,0,0,0.09);
+  --transition: 0.22s cubic-bezier(.77,0,.18,1);
+}
+
+/* Soft gradient for the background */
+.gradient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(120deg, #b1cfff 0%, #a4edd0 50%, #fff1ba 100%);
+  opacity: 0.45;
+  transition: background 0.4s;
+}
+body.light .gradient-bg {
+  background: linear-gradient(115deg, #d5e8fd 0%, #e8fff3 70%, #fffbe6 100%);
+  opacity: 0.6;
+}
+
+/* Body and font choices */
+body {
+  background: #1a2233;
+}
+body.light {
+  background: #f8fafc;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  /* A little fancy font for a different look */
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+  background: var(--bg-dark);
+  color: var(--text-dark);
+  transition: background var(--transition), color var(--transition);
+}
+body.light {
+  background: var(--bg-light);
+  color: var(--text-light);
+}
+
+/* Nav bar at the top */
+nav {
+  background: var(--card-dark);
+  color: var(--primary);
+  padding: 1.3em 2em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #263147;
+  box-shadow: 0 2px 18px rgba(0,0,0,0.06);
+  z-index: 2;
+  position: relative;
+  flex-wrap: wrap;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light nav {
+  background: var(--card-light);
+  color: var(--primary-light);
+  border-bottom: 1.5px solid #dde4ee;
+}
+.logo-block {
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  font-size: 1.6em;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .logo {
+  color: var(--primary-light);
+}
+.motivation-tip {
+  color: var(--danger);
+  font-size: 1.05em;
+  margin-top: 0.2em;
+  min-height: 1.5em;
+}
+.nav-buttons {
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+nav button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5em 1.2em;
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+nav button:hover {
+  background: var(--primary);
+  color: #fff;
+}
+body.light nav button {
+  color: var(--primary-light);
+}
+body.light nav button:hover {
+  background: var(--primary-light);
+  color: #fff;
+}
+
+/* Main content card, keeps it centered and tidy */
+main {
+  max-width: 500px;
+  margin: 56px auto 0 auto;
+  padding: 2.5em 2em 2em 2em;
+  background: var(--card-dark);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 370px;
+  position: relative;
+  z-index: 1;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light main {
+  background: var(--card-light);
+  color: var(--text-light);
+}
+
+/* Welcome message at the top of home page */
+.welcome-box {
+  background: rgba(63, 167, 255, 0.10);
+  border-radius: var(--radius);
+  padding: .3em 1.2em;
+  margin-bottom: 1.4em;
+  border: 1.2px solid #3fa7ff;
+  font-size: 1.1em;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .welcome-box {
+  background: #e8eef6;
+  border: 1.2px solid #2c65c8;
+}
+
+/* Tabs for multiple lists */
+#list-tabs {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 1.1em;
+  flex-wrap: wrap;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.todo-list-tab {
+  padding: 0.28em 1.1em;
+  border-radius: 8px 8px 0 0;
+  background: #263147;
+  color: var(--primary);
+  border: 1px solid #3fa7ff;
+  border-bottom: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1em;
+  transition: background var(--transition), color var(--transition);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.todo-list-tab.active {
+  background: #1a2233;
+  color: var(--secondary);
+  border-bottom: 2.5px solid var(--secondary);
+  font-weight: 600;
+}
+body.light .todo-list-tab {
+  background: #e8eef6;
+  border: 1px solid #2c65c8;
+  color: var(--primary-light);
+}
+body.light .todo-list-tab.active {
+  background: #fff;
+  border-bottom: 2.5px solid var(--secondary-light);
+  color: var(--secondary-light);
+}
+.delete-list-btn {
+  margin-left: 6px;
+  font-size: 0.95em;
+  color: var(--danger);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Floating button for adding new lists */
+.floating-add-list-btn {
+  position: fixed;
+  bottom: 36px;
+  right: 40px;
+  z-index: 20;
+  background: var(--secondary);
+  color: #fff;
+  border: none;
+  border-radius: 22px;
+  min-width: 42px;
+  height: 42px;
+  font-size: 1.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+  cursor: pointer;
+  transition: background var(--transition), transform 0.2s;
+  padding: 0 16px 0 12px;
+  gap: 8px;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.floating-add-list-btn .add-list-plus {
+  font-size: 1.28em;
+  font-weight: bold;
+  margin-right: 2px;
+}
+.floating-add-list-btn .add-list-text {
+  font-size: 1.03em;
+  font-weight: 500;
+}
+.floating-add-list-btn:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.08);
+}
+
+/* To-Do Section and Form */
+#todo-section {
+  margin-top: 1.8em;
+}
+#todo-form {
+  display: flex;
+  gap: 0.7em;
+  margin-bottom: 1.1em;
+  flex-wrap: wrap;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#todo-input {
+  flex: 2 1 200px;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: 1.5px solid #3fa7ff;
+  background: var(--input-dark);
+  color: var(--text-dark);
+  font-size: 1em;
+  outline: none;
+  min-width: 140px;
+  max-width: 100%;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#todo-input:focus {
+  border: 1.5px solid var(--primary);
+  background: #263147;
+  color: var(--primary);
+}
+body.light #todo-input {
+  background: var(--input-light);
+  border: 1.5px solid #2c65c8;
+  color: var(--text-light);
+}
+body.light #todo-input:focus {
+  border: 1.5px solid var(--primary-light);
+  background: #fff;
+  color: var(--primary-light);
+}
+#todo-due-input {
+  font-size: 1em;
+  padding: 0.5em 0.6em;
+  border-radius: 8px;
+  border: 1.5px solid #3fa7ff;
+  background: var(--input-dark);
+  color: var(--primary);
+  min-width: 120px;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#todo-due-input:focus {
+  border: 1.5px solid var(--secondary);
+  background: #263147;
+  color: var(--secondary);
+}
+body.light #todo-due-input {
+  background: var(--input-light);
+  border: 1.5px solid #2c65c8;
+  color: var(--primary-light);
+}
+body.light #todo-due-input:focus {
+  border: 1.5px solid var(--secondary-light);
+  background: #fff;
+  color: var(--secondary-light);
+}
+#todo-form button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background var(--transition);
+  box-shadow: none;
+  min-width: 80px;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#todo-form button:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+body.light #todo-form button {
+  background: var(--primary-light);
+}
+body.light #todo-form button:hover {
+  background: var(--secondary-light);
+}
+
+/* To-Do List Items */
+.todo-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--input-dark);
+  padding: 0.8em 0.5em;
+  margin-bottom: 0.8em;
+  border-radius: 8px;
+  border: 1px solid #3fa7ff;
+  box-shadow: 0 2px 12px rgba(30,80,140,0.04);
+  animation: fadeIn 0.54s;
+  transition: background var(--transition), box-shadow var(--transition);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+  color: var(--text-dark);
+}
+body.light .todo-item {
+  background: var(--input-light);
+  border: 1px solid #2c65c8;
+  color: var(--text-light);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(18px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.completed .todo-text {
+  text-decoration: line-through;
+  color: #b1b1b1 !important;
+}
+.todo-text {
+  flex: 1;
+  font-size: 1.08em;
+  cursor: pointer;
+  padding-left: 0.5em;
+  background: none;
+  border: none;
+  color: var(--text-dark);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .todo-text {
+  color: var(--text-light);
+}
+.todo-due {
+  margin-left: 10px;
+  font-size: 0.98em;
+  color: var(--primary);
+}
+body.light .todo-due {
+  color: var(--primary-light);
+}
+.todo-actions button {
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 1.16em;
+  margin-left: 0.2em;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0.2em 0.5em;
+  box-shadow: none;
+  transition: color var(--transition), transform 0.2s;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.todo-actions button:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: scale(1.08);
+}
+body.light .todo-actions button {
+  color: var(--primary-light);
+}
+body.light .todo-actions button:hover {
+  background: var(--primary-light);
+  color: #fff;
+}
+
+/* Auth forms and divider */
+.auth-forms-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5em;
+  margin: 1.6em auto 1.5em auto;
+  max-width: 700px;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.auth-form {
+  background: var(--card-dark);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  border: 1px solid #3fa7ff;
+  padding: 2em 1.5em 1.5em 1.5em;
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .auth-form {
+  background: var(--card-light);
+  border: 1px solid #2c65c8;
+}
+.auth-form h3 {
+  margin: 0 0 0.7em 0;
+  text-align: center;
+  font-size: 1.19em;
+  color: var(--primary);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .auth-form h3 {
+  color: var(--primary-light);
+}
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  padding: 0.52em 0.9em;
+  border-radius: 8px;
+  border: 1.5px solid #3fa7ff;
+  background: var(--input-dark);
+  color: var(--text-dark);
+  font-size: 1em;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+  border: 1.5px solid var(--secondary);
+  background: #263147;
+  color: var(--secondary);
+}
+body.light .auth-form input[type="text"],
+body.light .auth-form input[type="password"] {
+  background: var(--input-light);
+  border: 1.5px solid #2c65c8;
+  color: var(--text-light);
+}
+body.light .auth-form input[type="text"]:focus,
+body.light .auth-form input[type="password"]:focus {
+  border: 1.5px solid var(--secondary-light);
+  background: #fff;
+  color: var(--secondary-light);
+}
+.auth-form button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background var(--transition);
+  box-shadow: none;
+  min-width: 80px;
+  margin-top: 0.3em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.auth-form button:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+body.light .auth-form button {
+  background: var(--primary-light);
+}
+body.light .auth-form button:hover {
+  background: var(--secondary-light);
+}
+.auth-msg {
+  min-height: 1.25em;
+  color: var(--danger);
+  text-align: center;
+  font-size: 0.97em;
+  margin-top: 0.2em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.auth-divider {
+  width: 2px;
+  background: #dde4ee;
+  min-height: 220px;
+  margin: 0 0.7em;
+  border-radius: 2px;
+  align-self: stretch;
+}
+@media (max-width: 700px) {
+  .auth-forms-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2em;
+    max-width: 98vw;
+  }
+  .auth-divider {
+    width: 100%;
+    height: 2px;
+    min-height: unset;
+    margin: 1.1em 0;
+  }
+}
+
+/* Undo popup and various overlays for lock and forgot password */
+#undo-popup {
+  font-size: 1.13em;
+  background: #fff;
+  color: var(--primary-dark);
+  border-radius: 18px;
+  padding: 13px 32px;
+  box-shadow: var(--shadow);
+  border: 2px solid var(--primary-dark);
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  z-index: 999;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#undo-popup button {
+  margin-left: 1em;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#undo-popup button:hover {
+  background: var(--secondary);
+}
+
+#lock-screen, #forgot-pin-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(26,34,51,0.96);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#lock-screen form,
+#forgot-pin-modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#lock-screen input,
+#forgot-pin-modal input {
+  font-size: 1.1em;
+  padding: 0.5em 1em;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 1em;
+  width: 220px;
+  background: var(--input-dark);
+  color: var(--text-dark);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light #lock-screen input,
+body.light #forgot-pin-modal input {
+  background: var(--input-light);
+  color: var(--text-light);
+}
+#lock-screen button,
+#forgot-pin-modal button {
+  font-size: 1em;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 0.7em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#lock-screen button:hover,
+#forgot-pin-modal button:hover {
+  background: var(--secondary);
+}
+body.light #lock-screen button,
+body.light #forgot-pin-modal button {
+  background: var(--primary-light);
+}
+body.light #lock-screen button:hover,
+body.light #forgot-pin-modal button:hover {
+  background: var(--secondary-light);
+}
+#lock-msg, #forgot-msg {
+  color: var(--danger);
+  margin-top: 1em;
+  display: none;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+
+/* Settings page cards */
+.settings-block {
+  margin-bottom: 1.6em;
+  background: var(--card-dark);
+  border-radius: var(--radius);
+  padding: 1.2em 1.3em 1em 1.3em;
+  box-shadow: 0 2px 12px rgba(60,40,120,0.08);
+  border: 1px solid #3fa7ff;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .settings-block {
+  background: #e8eef6;
+  border: 1px solid #2c65c8;
+  box-shadow: 0 2px 8px rgba(34,230,123,0.07);
+}
+.settings-block button {
+  margin-right: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.45em 1.3em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform 0.18s;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.settings-block button:hover {
+  background: var(--secondary);
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+}
+body.light .settings-block button {
+  background: var(--primary-light);
+}
+body.light .settings-block button:hover {
+  background: var(--secondary-light);
+  color: #fff;
+  transform: translateY(-2px) scale(1.06);
+}
+.settings-block button:active {
+  background: #0d4d8c;
+  color: #fff;
+  transform: scale(0.97);
+}
+
+/* Help and About pages */
+.help-list {
+  padding-left: 1.2em;
+  color: #f2f4fa;
+  font-size: 1.08em;
+  line-height: 1.7;
+  background: #212c3b;
+  padding: 1em 1.1em;
+  border-radius: 10px;
+  border: 1.5px solid #3fa7ff;
+  margin-top: 0.6em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light .help-list {
+  background: #e8eef6;
+  border: 1.5px solid #2c65c8;
+  color: #2d3848;
+}
+#page-about {
+  background: rgba(63, 167, 255, 0.10);
+  border-radius: var(--radius);
+  padding: 1.5em 1.3em;
+  margin-bottom: 1.5em;
+  border: 1px solid #3fa7ff;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.04);
+  text-align: left;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light #page-about {
+  background: #e8eef6;
+  border: 1px solid #2c65c8;
+}
+#page-about h2 {
+  text-align: center;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#page-about .about-quote {
+  text-align: center;
+  font-style: italic;
+  color: inherit;
+  font-size: 1.15em;
+  margin-bottom: 1.5em;
+  margin-top: 0.6em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#page-about ul { margin: 0 auto; max-width: 90%; }
+#page-about ul li { margin-bottom: 0.5em; font-size: 1em; font-family: "Lucida Calligraphy", cursive, serif !important; }
+
+/* Contact page links and icons */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  margin-top: 1.5em;
+  align-items: start;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.contact-links a {
+  display: flex;
+  align-items: center;
+  color: var(--primary);
+  font-size: 1.08em;
+  text-decoration: none;
+  font-weight: 500;
+  gap: 0.6em;
+  transition: color 0.18s;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+.contact-links a:hover {
+  color: var(--secondary);
+}
+body.light .contact-links a {
+  color: var(--primary-light);
+}
+body.light .contact-links a:hover {
+  color: var(--secondary-light);
+}
+.contact-icon {
+  width: 1.7em;
+  height: 1.7em;
+  margin-right: 0.2em;
+  vertical-align: middle;
+}
+
+/* Checkbox style tweaks */
+input[type="checkbox"] {
+  width: 1.13em;
+  height: 1.13em;
+  accent-color: var(--secondary);
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+body.light input[type="checkbox"] {
+  accent-color: var(--secondary-light);
+}
+
+/* --- Sign Out Button on Account Page --- */
+#sign-out-btn {
+  background: var(--danger);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, transform 0.13s;
+  box-shadow: none;
+  margin-top: 1em;
+  font-family: "Lucida Calligraphy", cursive, serif !important;
+}
+#sign-out-btn:hover {
+  background: #ff6769;
+  color: #fff;
+  transform: scale(1.05);
+}
+body.light #sign-out-btn {
+  background: #e84147;
+}
+body.light #sign-out-btn:hover {
+  background: #ff6769;
+  color: #fff;
+}

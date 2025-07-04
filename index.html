@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TaskMate To-Do List</title>
+  <!-- Grab the stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark">
+  <!-- Just a background gradient for a nice look -->
+  <div class="gradient-bg"></div>
+  <!-- Top navigation bar -->
+  <nav>
+    <div class="logo-block">
+      <span class="logo">TaskMate To-Do List</span>
+      <span id="motivation-quote" class="motivation-tip"></span>
+    </div>
+    <div class="nav-buttons">
+      <button id="nav-home">Home</button>
+      <button id="nav-about">About</button>
+      <button id="nav-settings">Settings</button>
+      <button id="nav-help">Help</button>
+      <button id="nav-contact">Contact</button>
+      <button id="nav-account"></button>
+      <button id="toggle-theme">🌙</button>
+    </div>
+  </nav>
+  <main>
+    <!-- Home page, where the lists and tasks show up -->
+    <section id="page-home" class="page">
+      <div class="welcome-box">
+        <h2>Welcome, <span id="user-name"></span>!</h2>
+      </div>
+      <div id="list-tabs"></div>
+      <div id="todo-section"></div>
+    </section>
+    <!-- About page explaining what this app does -->
+    <section id="page-about" class="page" style="display:none">
+      <h2>About TaskMate</h2>
+      <div class="about-quote"><em>Plan better. Work smarter. Stay organized.</em></div>
+      <ul>
+        <li>
+          <strong>TaskMate</strong> is a simple, privacy-friendly to-do app to keep your life, work, or studies on track.<br>
+          It has a clean interface and you keep your data—no servers.
+        </li>
+        <li>
+          <strong>Main Features:</strong>
+          <ul>
+            <li>You can have multiple lists, each with its own name</li>
+            <li>Add tasks with or without due dates</li>
+            <li>Edit and rename anything (lists or tasks)</li>
+            <li>Undo accidental task deletes quickly</li>
+            <li>Sign in securely (username, password, and a hint you choose)</li>
+            <li>Password lock for privacy</li>
+            <li>Change or recover your password using your hint</li>
+            <li>Switch between light/dark mode; your choice is saved</li>
+            <li>Keyboard shortcuts for fast adding and switching</li>
+            <li>All your info is private, stays in your browser (local storage)</li>
+            <li>No registration on any server; you’re in control</li>
+          </ul>
+        </li>
+        <li>
+          TaskMate is pure HTML, CSS, and JavaScript—works offline too.<br>
+          Perfect for daily tasks, school, or projects. Stay organized!
+        </li>
+      </ul>
+    </section>
+    <!-- Settings, for theme and privacy controls -->
+    <section id="page-settings" class="page" style="display:none">
+      <h2>Settings</h2>
+      <div class="settings-block">
+        <p><strong>Theme:</strong> <span id="current-theme">Dark</span></p>
+        <button id="theme-toggle-btn">Toggle Light/Dark</button>
+      </div>
+      <div class="settings-block">
+        <p><strong>Account Data:</strong></p>
+        <button id="clear-account-btn">Clear My Account Data</button>
+        <button id="clear-all-btn">Clear All Accounts (This Device)</button>
+      </div>
+      <div class="settings-block">
+        <p><strong>Privacy:</strong></p>
+        <button id="set-pin-btn">Set/Change Password</button>
+        <button id="lock-btn">Lock Now</button>
+        <button id="forgot-pin-btn">Forgot Password?</button>
+      </div>
+      <div class="settings-block">
+        <p><strong>Shortcuts:</strong><br>
+        <span style="font-size:0.93em;color:#0a6fa3;">
+          <strong>Alt+N</strong>: Add new task &nbsp; | &nbsp;
+          <strong>Alt+L</strong>: Add new list &nbsp; | &nbsp;
+          <strong>Alt+1</strong>, <strong>Alt+2</strong>, ...: Switch lists
+        </span>
+        </p>
+      </div>
+    </section>
+    <!-- Help for using the app -->
+    <section id="page-help" class="page" style="display:none">
+      <h2>Help</h2>
+      <ul class="help-list">
+        <li>Sign in with a username to see your lists. You’ll need a password and a password hint (for recovery).</li>
+        <li>If you forget your password, use your hint to reset it.</li>
+        <li>Click <strong>Add New List</strong> or press <strong>Alt+L</strong> to make more lists.</li>
+        <li>Switch lists with <strong>Alt+1</strong>, <strong>Alt+2</strong>, etc. The current one is always at the top.</li>
+        <li>Add tasks with the box at the top or <strong>Alt+N</strong>. You can set a due date, but it’s optional.</li>
+        <li>Edit a task by clicking its text or the pencil. Double-click a list name to rename it.</li>
+        <li>Check off tasks, delete them with the trash icon, and undo a delete if you need.</li>
+        <li>If you have more than one list, you can delete lists with the × button.</li>
+        <li>Lock your lists for privacy, unlock with your password.</li>
+        <li>Change your password or hint anytime from Settings.</li>
+        <li>Switch themes at any time using the nav or Settings.</li>
+        <li>Your info never leaves your browser (local storage).</li>
+        <li>For any help or feedback, go to Contact.</li>
+      </ul>
+    </section>
+    <!-- Contact page for feedback or support -->
+    <section id="page-contact" class="page" style="display:none">
+      <h2>Contact</h2>
+      <div class="contact-links">
+        <a href="mailto:hitohemanth94437@gmail.com" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail" class="contact-icon"> Gmail
+        </a>
+        <a href="https://www.linkedin.com/in/hemanth-kumar-v-8292ab258/" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="contact-icon"> LinkedIn
+        </a>
+        <a href="https://github.com/Hemanth-Kumar2005" target="_blank">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub" class="contact-icon"> GitHub
+        </a>
+      </div>
+    </section>
+    <!-- Account stuff: sign in or register -->
+    <section id="page-account" class="page" style="display:none">
+      <h2 style="text-align:center;">Account</h2>
+      <div class="auth-forms-row">
+        <!-- Login form -->
+        <form id="sign-in-form" class="auth-form" autocomplete="off">
+          <h3>Sign In</h3>
+          <input type="text" id="signin-username" placeholder="Username" maxlength="20" autocomplete="username">
+          <input type="password" id="signin-password" placeholder="Password" maxlength="32" autocomplete="current-password">
+          <button type="submit">Sign In</button>
+          <div id="signin-msg" class="auth-msg"></div>
+        </form>
+        <div class="auth-divider"></div>
+        <!-- Register form -->
+        <form id="register-form" class="auth-form" autocomplete="off">
+          <h3>Register</h3>
+          <input type="text" id="register-username" placeholder="Username" maxlength="20" autocomplete="username">
+          <input type="password" id="register-password" placeholder="Password" maxlength="32" autocomplete="new-password">
+          <input type="text" id="register-hint" placeholder="Hint" maxlength="40" autocomplete="off">
+          <button type="submit">Register</button>
+          <div id="register-msg" class="auth-msg"></div>
+        </form>
+      </div>
+      <div id="signed-in-as" style="display:none">
+        <p>Signed in as <span id="signed-in-user"></span></p>
+        <button id="sign-out-btn">Sign Out</button>
+      </div>
+    </section>
+    <!-- Floating button for adding lists (only shows up when needed) -->
+    <button class="floating-add-list-btn" id="floating-add-list-btn" title="Add a new list" style="display:none;">
+      <span class="add-list-plus">+</span>
+      <span class="add-list-text">Add New List</span>
+    </button>
+    <!-- Undo popup for deleted task -->
+    <div id="undo-popup" style="display:none;position:fixed;left:50%;bottom:80px;transform:translateX(-50%);background:#fff;color:#1376c8;padding:13px 32px;border-radius:18px;box-shadow:0 4px 32px rgba(0,0,0,0.09);font-size:1.13em;z-index:999;border:2px solid #1376c8;">
+      Task deleted. <button id="undo-btn" style="margin-left:1em;background:#1376c8;color:#fff;border:none;padding:6px 16px;border-radius:10px;cursor:pointer;">Undo</button>
+    </div>
+    <!-- Lock screen for privacy -->
+    <div id="lock-screen" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(23,28,40,0.95);color:#fff;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:2em;margin-bottom:1em;">🔒 Locked</div>
+      <form id="unlock-form" style="display:flex;flex-direction:column;align-items:center;">
+        <input type="password" id="unlock-pin" placeholder="Enter Password" maxlength="32" style="font-size:1.2em;padding:0.5em 1em;border-radius:8px;border:none;margin-bottom:1em;">
+        <button type="submit" style="font-size:1em;background:#1376c8;color:#fff;padding:0.5em 1.2em;border-radius:8px;border:none;cursor:pointer;">Unlock</button>
+      </form>
+      <div id="lock-msg" style="color:#ff5555;margin-top:1em;display:none;">Wrong Password</div>
+    </div>
+    <!-- Forgot password modal -->
+    <div id="forgot-pin-modal" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(23,28,40,0.98);color:#fff;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.2em;margin-bottom:1em;">Reset Password</div>
+      <form id="forgot-pin-form" style="display:flex;flex-direction:column;align-items:center;">
+        <input type="text" id="forgot-user" placeholder="Enter your username" maxlength="20" style="font-size:1.1em;padding:0.5em 1em;border-radius:8px;border:none;margin-bottom:1em;">
+        <input type="text" id="forgot-hint" placeholder="Your password hint" maxlength="40" style="font-size:1.1em;padding:0.5em 1em;border-radius:8px;border:none;margin-bottom:1em;">
+        <input type="password" id="forgot-new-pin" placeholder="Set a new password" maxlength="32" style="font-size:1.1em;padding:0.5em 1em;border-radius:8px;border:none;margin-bottom:1em;">
+        <button type="submit" style="font-size:1em;background:#1376c8;color:#fff;padding:0.5em 1.2em;border-radius:8px;border:none;cursor:pointer;">Reset</button>
+      </form>
+      <div id="forgot-msg" style="color:#ff5555;margin-top:1em;display:none;"></div>
+      <button id="forgot-cancel-btn" style="margin-top:15px;background:#fff;color:#1376c8;border:none;padding:7px 18px;border-radius:8px;cursor:pointer;">Cancel</button>
+    </div>
+  </main>
+  <!-- Bring in the main JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
