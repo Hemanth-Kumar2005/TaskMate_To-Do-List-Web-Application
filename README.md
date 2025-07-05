@@ -37,7 +37,7 @@
    git clone https://github.com/Hemanth-Kumar2005/taskmate-todo-list.git
    cd taskmate-todo-list
    ```
-   Or [Download as ZIP](https://github.com/Hemanth-Kumar2005/taskmate-todo-list/archive/refs/heads/main.zip) and extract.
+   Or [Download as ZIP](https://github.com/Hemanth-Kumar2005/TaskMate_To-Do-List-Web-Application.git) and extract.
 
 2. **Run the App**
 
