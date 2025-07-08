@@ -77,6 +77,10 @@
 
 ---
 
+## Screenshots
+
+---
+
 ## ⌨️ Keyboard Shortcuts
 
 - **Alt+N:** Add new task (focus input)
