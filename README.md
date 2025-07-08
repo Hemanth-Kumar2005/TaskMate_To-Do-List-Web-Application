@@ -78,10 +78,7 @@
 ---
 
 ## Screenshots
-
-![Register Screen](images/image-1.png)
-_Register securely with a username, password, and hint. Your data stays 100% on your device—no servers, no tracking._
-
+<img width="1919" height="862" alt="Image" src="https://github.com/user-attachments/assets/b43b552b-cb9a-4a03-8b2f-c07710f537da" />
 ---
 
 ## ⌨️ Keyboard Shortcuts
