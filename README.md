@@ -78,7 +78,14 @@
 ---
 
 ## Screenshots
+**Login Page**
 <img width="1919" height="862" alt="Image" src="https://github.com/user-attachments/assets/b43b552b-cb9a-4a03-8b2f-c07710f537da" />
+**Home Page**
+<img width="1919" height="865" alt="Image" src="https://github.com/user-attachments/assets/067c2c6a-a2fb-43ea-bc3a-255817d9d64d" />
+**Security**
+<img width="1894" height="862" alt="Image" src="https://github.com/user-attachments/assets/944ac2c9-2cbc-4d29-95b8-35365f702150" />
+<img width="1895" height="847" alt="Image" src="https://github.com/user-attachments/assets/cb6227fb-7b1e-449b-ae8c-2259f7042321" />
+
 ---
 
 ## ⌨️ Keyboard Shortcuts
